@@ -1,0 +1,30 @@
+
+{{ form_start(form) }}
+{{ form_widget(form) }}
+{{ form_end(form )}}
+
+<table border="3">
+    <tr>
+        <td>id</td>
+        <td>username</td>
+        <td>email</td>
+        <td>nb_books</td>
+        <td>Action</td>
+        
+    </tr>
+    {% for a in authors %}
+    <tr>
+        <td>{{a.id}}</td>
+        <td>{{a.username | upper}}</td>
+        <td>{{a.email}}</td>
+               <td>{{a.nb_books}}</td>
+
+        <td><a href="{{path('editauthor',{'id':a.id})}}">edit</a></td>
+        <td><a href="{{path('deleteauthor',{'id':a.id})}}">delete</a></td>
+        <td><a href="{{path('authorDetails',{'id':a.id})}}">show</a></td>
+
+    </tr>
+    {% endfor %}
+</table>
+<p>delete Auther with no book           <a href="{{path('deleteAuthorsWithNoBooks')}}">delete</a></td>
+   </p> 

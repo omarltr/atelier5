@@ -1,0 +1,33 @@
+
+
+
+
+{% if authorshtml is defined and authorshtml|length  > 0  %}
+<table border="3">
+    <tr>
+        <td>id</td>
+        <td>username</td>
+        <td>email</td>
+        <td>nbr_books</td>
+        <td>Action</td>
+    </tr>
+    {% set total = 0 %}
+    {% for a in authorshtml %}
+    <tr>
+        <td>{{a.id}}</td>
+        <td>{{a.username | upper}}</td>
+        <td>{{a.email}}</td>
+        <td>{{a.nb_books}}</td>
+
+
+        <td><a href="{{path('authorDetails',{'id': a.id})}}">Details</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+<p> Nombre Total des livres : {{ total }}</p>
+
+{% else %}
+<p> Authors not found</p>
+
+{% endif %}

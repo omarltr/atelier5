@@ -1,0 +1,24 @@
+
+{{ form_start(searchbook) }}
+    {{ form_row(searchbook.id) }}
+    {{ form_end(searchbook )}}
+<table border="3">
+    <tr>
+        <td>id</td>
+        <td>title</td>
+        <td>category</td>
+        <td>publicationDate</td>
+        <td>published</td>
+    </tr>
+    {% for a in books %}
+    <tr>
+        <td>{{a.id}}</td>
+        <td>{{a.title| upper}}</td>
+        <td>{{a.category}}</td>
+         <td>{{ a.publicationDate.format('Y-m-d H:i:s') }}</td>
+         <td>{{a.published}}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+<p>total sci fi book :{{totalscifi}}</p>
